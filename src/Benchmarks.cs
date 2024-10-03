@@ -28,21 +28,21 @@ public class Benchmarks
     }
 
     [Benchmark]
-    public void Foreach()
-    {
-        foreach (var item in _items)
-        {
-            var _ = item;
-        }
-    }
-
-    [Benchmark]
     public void For_Span()
     {
         var asSpan = CollectionsMarshal.AsSpan(_items);
         for (var i = 0; i < asSpan.Length; ++i)
         {
             var item = _items[i];
+        }
+    }
+
+    [Benchmark]
+    public void Foreach()
+    {
+        foreach (var item in _items)
+        {
+            var _ = item;
         }
     }
 
